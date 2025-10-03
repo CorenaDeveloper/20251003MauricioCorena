@@ -1,0 +1,73 @@
+﻿@page
+@model PruebaTecnica.Pages.Productos.EditPriceModel
+@{
+    ViewData["Title"] = "Actualizar Precio";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4">
+                        <h5>@Model.ProductoNombre</h5>
+                        <p class="mb-0"><strong>Precio actual:</strong> @Model.PrecioActual.ToString("C")</p>
+                    </div>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="ProductoId" />
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="PrecioBase" class="form-label">Precio Base</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="PrecioBase" class="form-control" type="number" step="0.01" />
+                            </div>
+                            <span asp-validation-for="PrecioBase" class="text-danger"></span>
+                            <small class="form-text text-muted">Debe ser mayor que cero</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PrecioConDescuento" class="form-label">Precio con Descuento</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="PrecioConDescuento" class="form-control" type="number" step="0.01" />
+                            </div>
+                            <span asp-validation-for="PrecioConDescuento" class="text-danger"></span>
+                            <small class="form-text text-muted">Opcional. Debe ser menor al precio base</small>
+                        </div>
+
+                        <div class="card bg-light mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title">Validaciones (HU-002):</h6>
+                                <ul class="mb-0">
+                                    <li>El precio base debe ser mayor que cero</li>
+                                    <li>El precio con descuento (si se ingresa) debe ser mayor que cero</li>
+                                    <li>El precio con descuento debe ser menor al precio base</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-info">
+                                <i class="bi bi-cash-coin"></i> Actualizar Precio
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
