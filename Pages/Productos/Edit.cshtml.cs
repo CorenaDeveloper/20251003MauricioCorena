@@ -45,7 +45,7 @@ namespace PruebaTecnica.Pages.Productos
             {
                 await _productoService.EditarProductoAsync(Producto);
                 TempData["SuccessMessage"] = "Producto actualizado exitosamente";
-                return RedirectToPage("Index");
+                return RedirectToPage("./Index");
             }
             catch (ArgumentException ex)
             {

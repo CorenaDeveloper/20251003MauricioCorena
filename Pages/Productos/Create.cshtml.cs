@@ -32,7 +32,7 @@ namespace PruebaTecnica.Pages.Productos
             {
                 await _productoService.CrearProductoAsync(Producto);
                 TempData["SuccessMessage"] = "Producto creado exitosamente";
-                return RedirectToPage("Index");
+                return RedirectToPage("./Index");
             }
             catch (ArgumentException ex)
             {

@@ -52,7 +52,7 @@ namespace PruebaTecnica.Pages.Productos
                 else
                 {
                     TempData["ErrorMessage"] = "No se pudo eliminar el producto";
-                    return RedirectToPage("Index");
+                    return RedirectToPage("./Index");
                 }
             }
             catch (Exception)
