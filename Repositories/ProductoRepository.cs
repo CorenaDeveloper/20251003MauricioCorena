@@ -13,7 +13,7 @@ namespace PruebaTecnica.Repositories
             _context = context;
         }
 
-        // Obtener todos los productos (consulta eficiente con AsNoTracking)
+        // Obtener todos los productos 
         public async Task<IEnumerable<Producto>> ObtenerTodosAsync()
         {
             return await _context.Productos
@@ -22,7 +22,7 @@ namespace PruebaTecnica.Repositories
                 .ToListAsync();
         }
 
-        // Obtener productos usando el procedimiento almacenado (HU-001 - Requisito)
+        // Obtener productos usando el procedimiento almacenado 
         public async Task<IEnumerable<Producto>> ObtenerProductosConSPAsync()
         {
             return await _context.Productos
@@ -39,7 +39,7 @@ namespace PruebaTecnica.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        // Agregar nuevo producto (HU-001)
+        // Agregar nuevo producto 
         public async Task<Producto> AgregarAsync(Producto producto)
         {
             producto.FechaCreacion = DateTime.Now;
@@ -48,7 +48,7 @@ namespace PruebaTecnica.Repositories
             return producto;
         }
 
-        // Actualizar producto (HU-001)
+        // Actualizar producto
         public async Task<Producto> ActualizarAsync(Producto producto)
         {
             producto.FechaModificacion = DateTime.Now;
@@ -57,7 +57,7 @@ namespace PruebaTecnica.Repositories
             return producto;
         }
 
-        // Eliminar producto (HU-001)
+        // Eliminar producto
         public async Task<bool> EliminarAsync(int id)
         {
             var producto = await _context.Productos.FindAsync(id);
@@ -69,7 +69,7 @@ namespace PruebaTecnica.Repositories
             return true;
         }
 
-        // Actualizar precio (HU-002)
+        // Actualizar precio
         public async Task<bool> ActualizarPrecioAsync(int id, decimal precioBase, decimal? precioConDescuento)
         {
             var producto = await _context.Productos.FindAsync(id);

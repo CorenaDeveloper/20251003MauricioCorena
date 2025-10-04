@@ -14,7 +14,7 @@ namespace PruebaTecnica.Services
 
         public async Task<IEnumerable<Producto>> ObtenerTodosProductosAsync()
         {
-            // Usa el procedimiento almacenado (cumple requisito HU-001)
+            // Usa el procedimiento almacenado 
             return await _productoRepository.ObtenerProductosConSPAsync();
         }
 
@@ -25,11 +25,11 @@ namespace PruebaTecnica.Services
 
         public async Task<Producto> CrearProductoAsync(Producto producto)
         {
-            // Validación: precio debe ser mayor que cero (HU-002)
+            // validacion de precio debe ser mayor que cero
             if (producto.PrecioBase <= 0)
                 throw new ArgumentException("El precio base debe ser mayor que cero");
 
-            // Validación: precio con descuento debe ser menor al precio base
+            // validacion  precio con descuento debe ser menor al precio base
             if (producto.PrecioConDescuento.HasValue)
             {
                 if (producto.PrecioConDescuento.Value <= 0)
@@ -67,7 +67,7 @@ namespace PruebaTecnica.Services
 
         public async Task<bool> ActualizarPrecioProductoAsync(int id, decimal precioBase, decimal? precioConDescuento)
         {
-            // Validación: precio debe ser mayor que cero (HU-002)
+            // validacion de precio debe ser mayor que cero (HU-002)
             if (precioBase <= 0)
                 throw new ArgumentException("El precio base debe ser mayor que cero");
 

@@ -55,7 +55,6 @@ namespace PruebaTecnica.Pages.Productos
         {
             if (!ModelState.IsValid)
             {
-                // Recargar el nombre del producto para mostrar en caso de error
                 var producto = await _productoService.ObtenerProductoPorIdAsync(ProductoId);
                 if (producto != null)
                 {
@@ -71,7 +70,7 @@ namespace PruebaTecnica.Pages.Productos
                 if (resultado)
                 {
                     TempData["SuccessMessage"] = "Precio actualizado exitosamente";
-                    return RedirectToPage("Index");
+                    return RedirectToPage("../Index");
                 }
                 else
                 {

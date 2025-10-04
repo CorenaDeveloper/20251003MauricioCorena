@@ -45,7 +45,7 @@
                                 <th>Descripción</th>
                                 <th>Precio Base</th>
                                 <th>Precio Descuento</th>
-                                <th>Precio Actual</th>
+                                <th>Actualmente</th>
                                 <th>Imagen</th>
                                 <th>Fecha Creación</th>
                                 <th>Acciones</th>
@@ -61,10 +61,13 @@
                                     <td>@producto.PrecioBase.ToString("C")</td>
                                     <td>@(producto.PrecioConDescuento?.ToString("C") ?? "N/A")</td>
                                     <td>
-                                        <strong class="text-success">@producto.PrecioActual.ToString("C")</strong>
                                         @if (producto.PrecioConDescuento.HasValue)
                                         {
                                             <span class="badge bg-success ms-1">Con descuento</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-info ms-1">Sin descuento</span>
                                         }
                                     </td>
                                     <td>

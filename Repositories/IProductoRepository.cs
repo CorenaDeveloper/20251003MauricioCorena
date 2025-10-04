@@ -11,7 +11,7 @@ namespace PruebaTecnica.Repositories
         Task<Producto> ActualizarAsync(Producto producto);
         Task<bool> EliminarAsync(int id);
 
-        // Usando procedimiento almacenado (Requisito del documento)
+        // Usando procedimiento almacenado 
         Task<IEnumerable<Producto>> ObtenerProductosConSPAsync();
 
         // HU-002: Actualizar precio

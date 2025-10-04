@@ -18,10 +18,12 @@ namespace PruebaTecnica.Models
         [Required(ErrorMessage = "El precio es requerido")]
         [Column(TypeName = "decimal(18,2)")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor que cero")]
+        [Display(Name = "Precio Base")]
         public decimal PrecioBase { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El precio con descuento debe ser mayor que cero")]
+        [Display(Name = "Precio con Descuento")]
         public decimal? PrecioConDescuento { get; set; }
 
         [StringLength(500)]
@@ -31,11 +33,10 @@ namespace PruebaTecnica.Models
 
         public DateTime? FechaModificacion { get; set; }
 
-        // Propiedad calculada para obtener el precio actual
         [NotMapped]
         public decimal PrecioActual => PrecioConDescuento ?? PrecioBase;
 
-        // Validación: el precio con descuento debe ser menor al precio base
+        //Validando que el precio con descuento sea menor que el precio base
         public bool ValidarPrecioDescuento()
         {
             if (PrecioConDescuento.HasValue)

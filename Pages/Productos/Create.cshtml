@@ -12,7 +12,7 @@
                     <h2>@ViewData["Title"]</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
                         <div class="mb-3">
@@ -48,14 +48,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Producto.Imagen" class="form-label"></label>
-                            <input asp-for="Producto.Imagen" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" />
-                            <span asp-validation-for="Producto.Imagen" class="text-danger"></span>
-                            <small class="form-text text-muted">URL de la imagen del producto</small>
+                            <label asp-for="ImagenArchivo" class="form-label">Imagen del Producto</label>
+                            <input asp-for="ImagenArchivo" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="ImagenArchivo" class="text-danger"></span>
+                            <small class="form-text text-muted">Formatos permitidos: JPG, PNG, GIF (máx. 5MB)</small>
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a asp-page="Index" class="btn btn-secondary">
+                            <a asp-page="../Index" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Cancelar
                             </a>
                             <button type="submit" class="btn btn-primary">

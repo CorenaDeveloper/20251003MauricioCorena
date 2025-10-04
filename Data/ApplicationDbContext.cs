@@ -16,7 +16,6 @@ namespace PruebaTecnica.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuración de la entidad Producto
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -28,7 +27,7 @@ namespace PruebaTecnica.Data
                 entity.Property(e => e.FechaCreacion).HasDefaultValueSql("GETDATE()");
             });
 
-            // Crear el procedimiento almacenado (HU-001 - Requisito)
+            // Crear el procedimiento almacenado 
             modelBuilder.Entity<Producto>()
                 .ToTable(tb => tb.HasTrigger("TR_ActualizarFechaModificacion"));
         }
